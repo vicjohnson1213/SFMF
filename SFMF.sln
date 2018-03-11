@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMFLauncher", "SFMFLauncher\SFMFLauncher.csproj", "{84732D3D-EAD4-4F3D-8853-45F2E5228B38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMF", "SFMF\SFMF.csproj", "{9986D241-176A-4879-89F9-511EFB90E151}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84732D3D-EAD4-4F3D-8853-45F2E5228B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84732D3D-EAD4-4F3D-8853-45F2E5228B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84732D3D-EAD4-4F3D-8853-45F2E5228B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84732D3D-EAD4-4F3D-8853-45F2E5228B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9986D241-176A-4879-89F9-511EFB90E151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9986D241-176A-4879-89F9-511EFB90E151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9986D241-176A-4879-89F9-511EFB90E151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9986D241-176A-4879-89F9-511EFB90E151}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01ECEFBA-72DA-4C18-919F-EE80C50123A8}
+	EndGlobalSection
+EndGlobal

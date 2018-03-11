@@ -1,0 +1,24 @@
+﻿<Window x:Name="SFMF_Launcher" x:Class="SFMFLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SFMFLauncher"
+        mc:Ignorable="d"
+        Title="SFMF Launcher" Height="450" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BtnInstallFramework" Content="Install Framework" Margin="10,10,10,0" Height="32" VerticalAlignment="Top" Click="BtnInstallFramework_Click" IsEnabled="False"/>
+        <Button x:Name="BtnUninstallFramework" Content="Uninstall Framework" Margin="10,10,10,0" Height="32" Grid.Column="1" VerticalAlignment="Top" Click="BtnUninstallFramework_Click" IsEnabled="False"/>
+        <Button x:Name="BtnInstallMod" Content="Install Selected Mod" Margin="10,0,10,28" Height="32" VerticalAlignment="Bottom" Click="BtnInstallMod_Click" IsEnabled="False"/>
+        <Button x:Name="BtnUninstallMod" Content="Uninstall Selected Mod" Margin="10,0,10,28" Height="32" VerticalAlignment="Bottom" Grid.Column="1" Click="BtnUninstallMod_Click" IsEnabled="False"/>
+        <Button x:Name="BtnRefreshMods" Content="Refresh Mod List" Margin="10,47,10,0" Click="BtnRefreshMods_Click" IsEnabled="False" Height="32" VerticalAlignment="Top"/>
+        <Button x:Name="BtnRefreshInstalled" Content="Refresh Installed List" Margin="10,47,9,0" IsEnabled="False" Height="32" VerticalAlignment="Top" Grid.Column="1" Click="BtnRefreshInstalled_Click"/>
+        <ListBox x:Name="LbxMods" Margin="10,84,10,65" SelectionChanged="LbxMods_SelectionChanged" SelectionMode="Extended"/>
+        <ListBox x:Name="LbxInstalled" Margin="10,84,10,65" SelectionMode="Extended" Grid.Column="1" SelectionChanged="LbxInstalled_SelectionChanged"/>
+        <ProgressBar x:Name="PgbLoad" Margin="10,0,10,10" Grid.ColumnSpan="2" Height="13" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>
