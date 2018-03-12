@@ -52,7 +52,7 @@ namespace SFMF
                         {
                             Assembly asm = Assembly.Load(File.ReadAllBytes(file));
                             foreach (var type in asm.GetExportedTypes())
-                                if (typeof(IPlugin).IsAssignableFrom(type))
+                                if (typeof(IMod).IsAssignableFrom(type))
                                     plugins.Add(type);
                             Console.WriteLine($"Loaded mod: {file}");
                         }
@@ -62,8 +62,8 @@ namespace SFMF
                         }
                     }
                     Console.WriteLine($"Loaded {plugins.Count} mods");
-                    foreach (Type plugin in plugins)
-                        gameObject.AddComponent(plugin);
+                    foreach (Type mod in plugins)
+                        gameObject.AddComponent(mod);
                 }
             }
             catch (Exception)

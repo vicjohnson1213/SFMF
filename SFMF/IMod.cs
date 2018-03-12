@@ -2,7 +2,7 @@
 
 namespace SFMF
 {
-    public abstract class IPlugin : MonoBehaviour
+    public abstract class IMod : MonoBehaviour
     {
     }
 }
