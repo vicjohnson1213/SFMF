@@ -2,6 +2,7 @@
 using SFMFManager.Util;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -37,9 +38,9 @@ namespace SFMFLauncher
         {
             BtnToggleFramework.Content = Manager.IsSFMFInstalled() ? "Uninstall SFMF" : "Install SFMF";
 
-            UpdateOnlineMods();
             UpdateSavedMods();
             UpdateInstalledMods();
+            UpdateOnlineMods();
         }
 
         private void BtnToggleFramework_Click(object sender, RoutedEventArgs e)
@@ -65,6 +66,7 @@ namespace SFMFLauncher
             SavedMods.Add(mod);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SavedMods"));
+            UpdateOnlineMods();
         }
 
         private void BtnRemoveMod_Click(object sender, RoutedEventArgs e)
@@ -76,6 +78,7 @@ namespace SFMFLauncher
             SavedMods.Remove(mod);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SavedMods"));
+            UpdateOnlineMods();
         }
 
         private void BtnInstallMod_Click(object sender, RoutedEventArgs e)
@@ -111,7 +114,8 @@ namespace SFMFLauncher
 
             OnlineMods.Clear();
             foreach (Mod mod in mods)
-                OnlineMods.Add(mod);
+                if (!SavedMods.Any(m => m.Download == mod.Download) && !InstalledMods.Any(m => m.Download == mod.Download))
+                    OnlineMods.Add(mod);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("OnlineMods"));
         }

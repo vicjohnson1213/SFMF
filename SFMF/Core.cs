@@ -47,7 +47,6 @@ namespace SFMF
                     Console.WriteLine($"Found {files.Length} mods");
                     foreach (string file in files)
                     {
-                        Console.WriteLine($"Loading mod: {file}");
                         try
                         {
                             Assembly asm = Assembly.Load(File.ReadAllBytes(file));
