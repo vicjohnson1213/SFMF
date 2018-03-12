@@ -9,5 +9,7 @@ namespace SFMFManager.Util
         public int[] Version { get; set; }
         public string Download { get; set; }
         public string Path { get; set; }
+
+        public string VersionString { get { return "v" + string.Join(".", Version); } }
     }
 }
