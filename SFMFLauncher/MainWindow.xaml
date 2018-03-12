@@ -5,20 +5,78 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SFMFLauncher"
         mc:Ignorable="d"
-        Title="SFMF Launcher" Height="450" Width="500">
+        Title="Superflight Modding Framework" Height="600" Width="1000">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="BtnInstallFramework" Content="Install Framework" Margin="10,10,10,0" Height="32" VerticalAlignment="Top" Click="BtnInstallFramework_Click" IsEnabled="False"/>
-        <Button x:Name="BtnUninstallFramework" Content="Uninstall Framework" Margin="10,10,10,0" Height="32" Grid.Column="1" VerticalAlignment="Top" Click="BtnUninstallFramework_Click" IsEnabled="False"/>
-        <Button x:Name="BtnInstallMod" Content="Install Selected Mod" Margin="10,0,10,28" Height="32" VerticalAlignment="Bottom" Click="BtnInstallMod_Click" IsEnabled="False"/>
-        <Button x:Name="BtnUninstallMod" Content="Uninstall Selected Mod" Margin="10,0,10,28" Height="32" VerticalAlignment="Bottom" Grid.Column="1" Click="BtnUninstallMod_Click" IsEnabled="False"/>
-        <Button x:Name="BtnRefreshMods" Content="Refresh Mod List" Margin="10,47,10,0" Click="BtnRefreshMods_Click" IsEnabled="False" Height="32" VerticalAlignment="Top"/>
-        <Button x:Name="BtnRefreshInstalled" Content="Refresh Installed List" Margin="10,47,9,0" IsEnabled="False" Height="32" VerticalAlignment="Top" Grid.Column="1" Click="BtnRefreshInstalled_Click"/>
-        <ListBox x:Name="LbxMods" Margin="10,84,10,65" SelectionChanged="LbxMods_SelectionChanged" SelectionMode="Extended"/>
-        <ListBox x:Name="LbxInstalled" Margin="10,84,10,65" SelectionMode="Extended" Grid.Column="1" SelectionChanged="LbxInstalled_SelectionChanged"/>
-        <ProgressBar x:Name="PgbLoad" Margin="10,0,10,10" Grid.ColumnSpan="2" Height="13" VerticalAlignment="Bottom"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Online Mods" FontSize="14" Grid.Column="0" />
+            <ScrollViewer Grid.Column="0" Margin="5,30,5,5" VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="ICOnlineMods" Padding="5" BorderBrush="#FFA4A4A4" BorderThickness="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="#FFE8E8E8" Margin="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Content="{Binding Name}" Padding="0" FontSize="14" Margin="5,5,5,0" VerticalAlignment="Center" />
+                                <Button Grid.Row="1" Content="Download" Width="70" HorizontalAlignment="Right" Margin="5" Tag="{Binding}" Click="BtnDownloadMod_Click" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+
+            <Label Content="Saved Mods" FontSize="14" Grid.Column="1" />
+            <ScrollViewer Grid.Column="1" Margin="5,30,5,5" VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="ICSavedMods" Padding="5" BorderBrush="#FFA4A4A4" BorderThickness="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="#FFE8E8E8" Margin="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Content="{Binding Name}" Padding="0" FontSize="14" Margin="5,5,5,0" VerticalAlignment="Center" />
+                                <Button Grid.Row="1" Content="Remove" Width="70" HorizontalAlignment="Right" Margin="5,5,80,5" Tag="{Binding}" Click="BtnRemoveMod_Click" />
+                                <Button Grid.Row="1" Content="Install" Width="70" HorizontalAlignment="Right" Margin="5" Tag="{Binding}" Click="BtnInstallMod_Click" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+
+            <Label Content="Installed Mods" FontSize="14" Grid.Column="2" />
+            <ScrollViewer Grid.Column="2" Margin="5,30,5,5" VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="ICInstalledMods" Padding="5" BorderBrush="#FFA4A4A4" BorderThickness="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="#FFE8E8E8" Margin="0,0,0,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Content="{Binding Name}" Padding="0" FontSize="14" Margin="5,5,5,0" VerticalAlignment="Center" />
+                                <Button Grid.Row="1" Content="Uninstall" Width="70" HorizontalAlignment="Right" Margin="5" Tag="{Binding}" Click="BtnUninstallMod_Click" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+
+        <Button x:Name="BtnToggleFramework" Content="Install SFMF" Grid.Row="1" Width="200" Margin="5" HorizontalAlignment="Right" Click="BtnToggleFramework_Click" />
     </Grid>
 </Window>

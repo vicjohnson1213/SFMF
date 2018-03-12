@@ -1,7 +1,7 @@
 ﻿using Mono.Cecil;
 using Mono.Collections.Generic;
 
-namespace SFMFLauncher.Util
+namespace SFMFManager.Util
 {
     public static class Util
     {

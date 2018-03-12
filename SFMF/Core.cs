@@ -9,8 +9,8 @@ namespace SFMF
 {
     public class Core : MonoBehaviour
     {
-        private const string pluginDir = @".\plugins";
-        private const string pluginExt = "dll";
+        private const string modDir = @".\installedMods";
+        private const string modExt = "dll";
 
         [DllImport("kernel32")]
         private static extern bool AllocConsole();
@@ -35,40 +35,40 @@ namespace SFMF
 
         private void LoadPlugins()
         {
-            Console.WriteLine("Loading plugins...");
+            Console.WriteLine("Loading mods...");
             try
             {
-                string[] files = Directory.GetFiles(pluginDir, $"*.{pluginExt}", SearchOption.TopDirectoryOnly);
+                string[] files = Directory.GetFiles(modDir, $"*.{modExt}", SearchOption.TopDirectoryOnly);
                 if (files.Length == 0)
-                    Console.WriteLine("No plugins found");
+                    Console.WriteLine("No mods found");
                 else
                 {
                     List<Type> plugins = new List<Type>();
-                    Console.WriteLine($"Found {files.Length} plugins");
+                    Console.WriteLine($"Found {files.Length} mods");
                     foreach (string file in files)
                     {
-                        Console.WriteLine($"Loading plugin {file}");
+                        Console.WriteLine($"Loading mod: {file}");
                         try
                         {
                             Assembly asm = Assembly.Load(File.ReadAllBytes(file));
                             foreach (var type in asm.GetExportedTypes())
                                 if (typeof(IPlugin).IsAssignableFrom(type))
                                     plugins.Add(type);
-                            Console.WriteLine($"Loaded plugin {file}");
+                            Console.WriteLine($"Loaded mod: {file}");
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine($"Failed to load plugin '{file}': {e.Message}");
+                            Console.WriteLine($"Failed to load mod: '{file}': {e.Message}");
                         }
                     }
-                    Console.WriteLine($"Loaded {plugins.Count} plugins");
+                    Console.WriteLine($"Loaded {plugins.Count} mods");
                     foreach (Type plugin in plugins)
                         gameObject.AddComponent(plugin);
                 }
             }
             catch (Exception)
             {
-                Console.WriteLine($"Failed to find plugin directory '{pluginDir}'");
+                Console.WriteLine($"Failed to find mod directory '{modDir}'");
             }
         }
     }

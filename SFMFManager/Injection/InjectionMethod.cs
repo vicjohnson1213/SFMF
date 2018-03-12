@@ -1,6 +1,6 @@
 ﻿using Mono.Cecil;
 
-namespace SFMFLauncher.Injection
+namespace SFMFManager.Injection
 {
     public class InjectionMethod
     {

@@ -36,18 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ILRepack, Version=2.0.15.0, Culture=neutral, PublicKeyToken=c3e9373f1c31208e, processorArchitecture=MSIL">
-      <HintPath>..\packages\ILRepack.Lib.2.0.15\lib\net40\ILRepack.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mono.Cecil.0.9.6.4\lib\net45\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Supremes, Version=1.0.0.6474, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\dcsoup.1.0.0\lib\net45\Supremes.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -63,9 +51,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Util\Plugin.cs" />
-    <Compile Include="Util\Settings.cs" />
-    <Compile Include="Util\Util.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,7 +59,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Injection\InjectionMethod.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -98,7 +82,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,10 +91,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SFMFConstants\SFMFConstants.csproj">
+      <Project>{a95767bb-09dd-4455-9235-7a79eb0598fb}</Project>
+      <Name>SFMFConstants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SFMFManager\SFMFManager.csproj">
+      <Project>{74D256E5-F9DE-4529-8101-4F481ACCB223}</Project>
+      <Name>SFMFManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SFMF\SFMF.csproj">
       <Project>{9986d241-176a-4879-89f9-511efb90e151}</Project>
       <Name>SFMF</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
