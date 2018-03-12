@@ -9,6 +9,5 @@ namespace SFMFManager.Util
         public int[] Version { get; set; }
         public string Download { get; set; }
         public string Path { get; set; }
-        public bool Featured { get; set; }
     }
 }
