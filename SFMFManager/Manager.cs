@@ -12,9 +12,9 @@ namespace SFMFManager
 {
     public static class Manager
     {
-        public static void InstallSFMF()
+        public static void InstallSFMF(bool disableScoreReporting)
         {
-            Injector.InstallFramework();
+            Injector.InstallFramework(disableScoreReporting);
         }
 
         public static void UninstallSFMF()

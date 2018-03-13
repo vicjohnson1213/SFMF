@@ -36,11 +36,17 @@ namespace SFMFLauncher
 
         private void InitializeUI()
         {
-            BtnToggleFramework.Content = Manager.IsSFMFInstalled() ? "Uninstall SFMF" : "Install SFMF";
+            UpdateStates();
 
             UpdateSavedMods();
             UpdateInstalledMods();
             UpdateOnlineMods();
+        }
+
+        private void UpdateStates()
+        {
+            BtnToggleFramework.Content = Manager.IsSFMFInstalled() ? "Uninstall SFMF" : "Install SFMF";
+            ChBxDisableScoreReporting.IsEnabled = !Manager.IsSFMFInstalled();
         }
 
         private void BtnToggleFramework_Click(object sender, RoutedEventArgs e)
@@ -52,9 +58,11 @@ namespace SFMFLauncher
             }
             else
             {
-                Manager.InstallSFMF();
+                Manager.InstallSFMF(ChBxDisableScoreReporting.IsChecked ?? false);
                 BtnToggleFramework.Content = "Uninstall SFMF";
             }
+
+            UpdateStates();
         }
 
         private void BtnDownloadMod_Click(object sender, RoutedEventArgs e)
