@@ -6,7 +6,7 @@ namespace SFMFConstants
 {
     public static class Constants
     {
-        public static readonly int[] Version = { 1, 0, 0 };
+        public static readonly string Version = "v1.0.1";
         public const string SettingsURL = "https://gist.github.com/vicjohnson1213/a2d401c991f31ea54377fc42dafb548b";
         public const string SteamRegistry = @"HKEY_CURRENT_USER\Software\Valve\Steam";
         public const string SteamConfig = "config/config.vdf";
