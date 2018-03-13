@@ -5,7 +5,7 @@ namespace SFMFManager.Util
 {
     public class Settings
     {
-        public int[] version;
+        public string version;
         public List<Mod> modlist;
     }
 }
