@@ -18,8 +18,8 @@
 		{
 			"name": "Run Statistics",
 			"authors": ["vicjohnson1213"],
-			"version": "v1.0.1",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/run-statistics-v1.0.1/RunStatistics.dll",
+			"version": "v1.0.2",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/run-statistics-v1.0.2/RunStatistics.dll",
 			"disableScoreReporting": false
 		}
 	]
