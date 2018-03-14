@@ -1,0 +1,111 @@
+body {
+    height: 100vh;
+    font-size: 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: #57607c;
+}
+
+a:visited {
+    color: #57607c;
+}
+
+.center {
+    text-align: center
+}
+
+.right {
+    text-align: right;
+}
+
+.left-margin {
+    margin-left: 20px;
+}
+
+.siimple-btn + .siimple-btn {
+    margin-left: 10px;
+}
+
+.header .siimple-content {
+    padding-top: 20px
+}
+
+.header .siimple-jumbotron-title {
+    font-size: 100px;
+    line-height: 90px;
+}
+
+.header .siimple-jumbotron-detail {
+    font-size: 24px;
+}
+
+.download {
+    margin-top: 10px;
+    padding-left: 24px;
+    padding-right: 24px;
+    line-height: 48px;
+    height: auto;
+
+    font-size: 24px;
+}
+
+.header .download {
+    color: #9f73f2;
+    background-color: #fff;
+}
+
+.featured {
+    /* font-size: 16px; */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.featured-title {
+    margin-bottom: 25px;
+}
+
+.featured-col {
+}
+
+.featured-col .siimple-h3 {
+    margin-top: 5px;
+}
+
+.featured-col .material-icons {
+    font-size: 80px;
+}
+
+.footer {
+    background-color: #f0f5fb;
+    padding-bottom: 50px;
+}
+
+.footer .siimple-h2 {
+    margin: 0;
+}
+
+.footer .siimple-p {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.footer-buttons {
+    margin-top: 5px;
+}
+
+
+
+
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
