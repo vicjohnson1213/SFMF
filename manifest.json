@@ -1,0 +1,23 @@
+{
+	"version": "v1.0.0",
+	"modlist": [
+		{
+			"name": "Unlimited Flight",
+			"authors": ["vicjohnson1213", "Phlarfl"],
+			"version": "v1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/unlimited-flight-v1.0.0/UnlimitedFlight.dll"
+		},
+		{
+			"name": "Visible Cursor",
+			"authors": ["vicjohnson1213", "Phlarfl"],
+			"version": "v1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/visible-cursor-v1.0.0/VisibleCursor.dll"
+		},
+		{
+			"name": "Run Statistics",
+			"authors": ["vicjohnson1213"],
+			"version": "v1.0.1",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/run-statistics-v1.0.1/RunStatistics.dll"
+		}
+	]
+}
