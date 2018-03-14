@@ -7,7 +7,7 @@ namespace SFMFConstants
     public static class Constants
     {
         public static readonly string Version = "v1.0.1";
-        public const string SettingsURL = "https://gist.github.com/vicjohnson1213/a2d401c991f31ea54377fc42dafb548b";
+        public const string SettingsURL = "https://raw.githubusercontent.com/vicjohnson1213/SFMF/manifest/manifest.json";
         public const string SteamRegistry = @"HKEY_CURRENT_USER\Software\Valve\Steam";
         public const string SteamConfig = "config/config.vdf";
         public const string SuperflightDirectory = "steamapps/common/SuperFlight";

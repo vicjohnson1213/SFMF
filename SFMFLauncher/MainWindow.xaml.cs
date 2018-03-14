@@ -8,20 +8,21 @@ using System.Windows.Controls;
 
 namespace SFMFLauncher
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        ObservableCollection<Mod> OnlineMods;
-        ObservableCollection<Mod> SavedMods;
-        ObservableCollection<Mod> InstalledMods;
+        private Manager Manager;
+
+        private ObservableCollection<Mod> OnlineMods;
+        private ObservableCollection<Mod> SavedMods;
+        private ObservableCollection<Mod> InstalledMods;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            Manager = new Manager();
 
             OnlineMods = new ObservableCollection<Mod>();
             SavedMods = new ObservableCollection<Mod>();
@@ -37,16 +38,13 @@ namespace SFMFLauncher
         private void InitializeUI()
         {
             UpdateStates();
-
-            UpdateSavedMods();
-            UpdateInstalledMods();
-            UpdateOnlineMods();
+            UpdateAllMods();
         }
 
         private void UpdateStates()
         {
             BtnToggleFramework.Content = Manager.IsSFMFInstalled() ? "Uninstall SFMF" : "Install SFMF";
-            ChBxDisableScoreReporting.IsEnabled = !Manager.IsSFMFInstalled();
+            UpdateScoreReportingLabel();
         }
 
         private void BtnToggleFramework_Click(object sender, RoutedEventArgs e)
@@ -58,7 +56,7 @@ namespace SFMFLauncher
             }
             else
             {
-                Manager.InstallSFMF(ChBxDisableScoreReporting.IsChecked ?? false);
+                Manager.InstallSFMF();
                 BtnToggleFramework.Content = "Uninstall SFMF";
             }
 
@@ -68,61 +66,59 @@ namespace SFMFLauncher
         private void BtnDownloadMod_Click(object sender, RoutedEventArgs e)
         {
             var mod = ((Button)sender).Tag as Mod;
-
-            var mods = Manager.SaveMod(mod);
-
-            SavedMods.Add(mod);
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SavedMods"));
-            UpdateOnlineMods();
+            Manager.SaveMod(mod);
+            UpdateAllMods();
         }
 
         private void BtnRemoveMod_Click(object sender, RoutedEventArgs e)
         {
             var mod = ((Button)sender).Tag as Mod;
-
             Manager.RemoveMod(mod);
-
-            SavedMods.Remove(mod);
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SavedMods"));
-            UpdateOnlineMods();
+            UpdateAllMods();
         }
 
         private void BtnInstallMod_Click(object sender, RoutedEventArgs e)
         {
             var mod = ((Button)sender).Tag as Mod;
-
             Manager.InstallMod(mod);
-
-            SavedMods.Remove(mod);
-            InstalledMods.Add(mod);
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SavedMods"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InstalledMods"));
+            UpdateAllMods();
+            UpdateScoreReportingLabel();
         }
 
         private void BtnUninstallMod_Click(object sender, RoutedEventArgs e)
         {
             var mod = ((Button)sender).Tag as Mod;
-
             Manager.UninstallMod(mod);
+            UpdateAllMods();
+            UpdateScoreReportingLabel();
+        }
 
-            InstalledMods.Remove(mod);
-            SavedMods.Add(mod);
+        private void UpdateScoreReportingLabel()
+        {
+            if (Manager.IsScoreReportindEnabled())
+            {
+                LblScoreReportingWarning.Visibility = Visibility.Hidden;
+                return;
+            }
 
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SavedMods"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InstalledMods"));
+            var modsAtFault = Manager.InstalledMods.Where(m => m.DisableScoreReporting).Select(m => m.Name);
+            LblScoreReportingWarning.Visibility = Visibility.Visible;
+            LblScoreReportingWarning.Content = $"{Strings.DisabledScoreReportingWarning}: {string.Join(", ", modsAtFault)}";
+        }
+
+        private void UpdateAllMods()
+        {
+            UpdateOnlineMods();
+            UpdateSavedMods();
+            UpdateInstalledMods();
         }
 
         private void UpdateOnlineMods()
         {
-
-            var mods = Manager.GetOnlineMods();
-
             OnlineMods.Clear();
-            foreach (Mod mod in mods)
-                if (!SavedMods.Any(m => m.Download == mod.Download) && !InstalledMods.Any(m => m.Download == mod.Download))
+            foreach (Mod mod in Manager.OnlineMods)
+                // Only show mods that aren't downloaded already.
+                if (!Manager.SavedMods.Any(m => m.Download == mod.Download) && !Manager.InstalledMods.Any(m => m.Download == mod.Download))
                     OnlineMods.Add(mod);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("OnlineMods"));
@@ -130,10 +126,8 @@ namespace SFMFLauncher
 
         private void UpdateSavedMods()
         {
-            var mods = Manager.GetSavedMods();
-
             SavedMods.Clear();
-            foreach (Mod mod in mods)
+            foreach (Mod mod in Manager.SavedMods)
                 SavedMods.Add(mod);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SavedMods"));
@@ -141,13 +135,16 @@ namespace SFMFLauncher
 
         private void UpdateInstalledMods()
         {
-            var mods = Manager.GetInstalledMods();
-
             InstalledMods.Clear();
-            foreach (Mod mod in mods)
+            foreach (Mod mod in Manager.InstalledMods)
                 InstalledMods.Add(mod);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InstalledMods"));
+        }
+
+        private static class Strings
+        {
+            public const string DisabledScoreReportingWarning = "Score reporting is disabled";
         }
     }
 }

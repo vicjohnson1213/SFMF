@@ -7,5 +7,6 @@
         public string Version { get; set; }
         public string Download { get; set; }
         public string Path { get; set; }
+        public bool DisableScoreReporting { get; set; }
     }
 }

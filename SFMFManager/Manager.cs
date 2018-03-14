@@ -1,7 +1,6 @@
 ﻿using SFMFConstants;
 using SFMFManager.Injection;
 using SFMFManager.Util;
-using Supremes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,24 +9,38 @@ using System.Net;
 
 namespace SFMFManager
 {
-    public static class Manager
+    public class Manager
     {
-        public static void InstallSFMF(bool disableScoreReporting)
+        public List<Mod> OnlineMods = new List<Mod>();
+        public List<Mod> SavedMods = new List<Mod>();
+        public List<Mod> InstalledMods = new List<Mod>();
+
+        public Manager()
         {
-            Injector.InstallFramework(disableScoreReporting);
+            LoadAllMods();
         }
 
-        public static void UninstallSFMF()
+        public void InstallSFMF()
+        {
+            Injector.InstallFramework(!IsScoreReportindEnabled());
+        }
+
+        public void UninstallSFMF()
         {
             Injector.UninstallFramework();
         }
 
-        public static bool IsSFMFInstalled()
+        public bool IsSFMFInstalled()
         {
             return Injector.IsFrameworkInstalled();
         }
 
-        public static List<Mod> SaveMod(Mod mod)
+        public bool IsScoreReportindEnabled()
+        {
+            return !InstalledMods.Any(m => m.DisableScoreReporting);
+        }
+
+        public void SaveMod(Mod mod)
         {
             var newPath = $"{Constants.SavedModLocation}/{mod.Name}.dll";
 
@@ -41,27 +54,21 @@ namespace SFMFManager
                 File.Move(mod.Path, newPath);
 
             mod.Path = newPath;
+            
+            SavedMods.Add(mod);
 
-            var mods = GetSavedMods();
-            mods.Add(mod);
-
-            File.WriteAllText(Constants.SavedManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(mods));
-
-            return mods;
+            File.WriteAllText(Constants.SavedManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(SavedMods));
         }
 
-        public static List<Mod> RemoveMod(Mod mod)
+        public void RemoveMod(Mod mod)
         {
-            var mods = GetSavedMods();
-            mods = mods.Where(m => m.Path != mod.Path).ToList();
+            SavedMods = SavedMods.Where(m => m.Path != mod.Path).ToList();
 
             File.Delete(mod.Path);
-            File.WriteAllText(Constants.SavedManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(mods));
-
-            return mods;
+            File.WriteAllText(Constants.SavedManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(SavedMods));
         }
 
-        public static List<Mod> InstallMod(Mod mod)
+        public void InstallMod(Mod mod)
         {
             var newPath = $"{Constants.InstalledModLocation}/{mod.Name}.dll";
 
@@ -72,27 +79,28 @@ namespace SFMFManager
             RemoveMod(mod);
             mod.Path = newPath;
 
-            var installedMods = GetInstalledMods();
-            installedMods.Add(mod);
+            InstalledMods.Add(mod);
 
-            File.WriteAllText(Constants.InstalledManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(installedMods));
-
-            return installedMods;
+            File.WriteAllText(Constants.InstalledManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(InstalledMods));
         }
 
-        public static List<Mod> UninstallMod(Mod mod)
+        public void UninstallMod(Mod mod)
         {
-            var mods = GetInstalledMods();
-            mods = mods.Where(m => m.Path != mod.Path).ToList();
+            InstalledMods = InstalledMods.Where(m => m.Path != mod.Path).ToList();
 
-            File.WriteAllText(Constants.InstalledManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(mods));
+            File.WriteAllText(Constants.InstalledManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(InstalledMods));
 
             SaveMod(mod);
-
-            return mods;
         }
 
-        public static List<Mod> GetInstalledMods()
+        public void LoadAllMods()
+        {
+            OnlineMods = LoadOnlineMods();
+            SavedMods = LoadSavedMods();
+            InstalledMods = LoadInstalledMods();
+        }
+
+        public List<Mod> LoadInstalledMods()
         {
             if (!File.Exists(Constants.InstalledManifestLocation))
                 return new List<Mod>();
@@ -101,7 +109,7 @@ namespace SFMFManager
             return Newtonsoft.Json.JsonConvert.DeserializeObject<List<Mod>>(manifest);
         }
 
-        public static List<Mod> GetSavedMods()
+        public List<Mod> LoadSavedMods()
         {
             if (!File.Exists(Constants.SavedManifestLocation))
                 return new List<Mod>();
@@ -110,21 +118,17 @@ namespace SFMFManager
             return Newtonsoft.Json.JsonConvert.DeserializeObject<List<Mod>>(manifest);
         }
 
-        public static List<Mod> GetOnlineMods()
+        public List<Mod> LoadOnlineMods()
         {
-            return GetSettings().modlist;
+            return LoadSettings().modlist;
         }
 
-        public static Settings GetSettings()
+        public Settings LoadSettings()
         {
-            string settingsString;
+            string json;
             using (var client = new WebClient())
-            {
-                settingsString = client.DownloadString(new Uri(Constants.SettingsURL));
-            }
+                json = client.DownloadString(new Uri(Constants.SettingsURL));
 
-            Supremes.Nodes.Document document = Dcsoup.Parse(settingsString);
-            string json = document.GetElementsByClass("blob-wrapper").Text;
             return Newtonsoft.Json.JsonConvert.DeserializeObject<Settings>(json);
         }
     }
