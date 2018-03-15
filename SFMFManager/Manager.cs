@@ -99,18 +99,36 @@ namespace SFMFManager
 
         public void InstallMod(Mod mod)
         {
+            var isScoreReportingEnabled = IsScoreReportindEnabled();
+
             mod.Installed = true;
             var installedMods = File.ReadAllLines(Constants.InstalledModsFile).ToList();
             installedMods.Add(mod.Path);
+
             File.WriteAllLines(Constants.InstalledModsFile, installedMods);
+
+            if (isScoreReportingEnabled != IsScoreReportindEnabled())
+            {
+                UninstallSFMF();
+                InstallSFMF();
+            }
         }
 
         public void UninstallMod(Mod mod)
         {
+            var isScoreReportingEnabled = IsScoreReportindEnabled();
+
             mod.Installed = false;
             var installedMods = File.ReadAllLines(Constants.InstalledModsFile).ToList();
             installedMods.Remove(mod.Path);
+
             File.WriteAllLines(Constants.InstalledModsFile, installedMods);
+
+            if (isScoreReportingEnabled != IsScoreReportindEnabled())
+            {
+                UninstallSFMF();
+                InstallSFMF();
+            }
         }
 
         public void LoadAllMods()

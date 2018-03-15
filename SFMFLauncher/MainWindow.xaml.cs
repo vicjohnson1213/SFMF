@@ -96,7 +96,6 @@ namespace SFMFLauncher
             var mod = ((Button)sender).Tag as Mod;
             Manager.InstallMod(mod);
             UpdateAllMods();
-            UpdateScoreReportingLabel();
         }
 
         private void BtnUninstallMod_Click(object sender, RoutedEventArgs e)
@@ -104,7 +103,6 @@ namespace SFMFLauncher
             var mod = ((Button)sender).Tag as Mod;
             Manager.UninstallMod(mod);
             UpdateAllMods();
-            UpdateScoreReportingLabel();
         }
 
         private void UpdateScoreReportingLabel()
@@ -122,9 +120,12 @@ namespace SFMFLauncher
 
         private void UpdateAllMods()
         {
+            BtnToggleFramework.IsEnabled = false;
             UpdateOnlineMods();
             UpdateSavedMods();
             UpdateInstalledMods();
+            UpdateScoreReportingLabel();
+            BtnToggleFramework.IsEnabled = true;
         }
 
         private void UpdateOnlineMods()
