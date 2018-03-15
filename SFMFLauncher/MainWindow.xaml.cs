@@ -61,6 +61,11 @@ namespace SFMFLauncher
             UpdateAllMods();
         }
 
+        private void MenuRefreshOnlineMods_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.LoadAllMods();
+        }
+
         private void BtnToggleFramework_Click(object sender, RoutedEventArgs e)
         {
             if (Manager.IsSFMFInstalled())
