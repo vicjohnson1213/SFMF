@@ -8,22 +8,20 @@ namespace SFMFConstants
     {
         public static readonly string Version = "v1.0.2";
         public const string SettingsURL = "https://raw.githubusercontent.com/vicjohnson1213/SFMF/manifest/manifest.json";
+        public static string SFMFDirectory = $"{AbsoluteInstallDirectory}/SFMF";
+        public static string ManifestFile = $"{SFMFDirectory}/manifest.json";
+        public static string InstalledModsFile = $"{SFMFDirectory}/installedMods.txt";
+
         public const string SteamRegistry = @"HKEY_CURRENT_USER\Software\Valve\Steam";
         public const string SteamConfig = "config/config.vdf";
         public const string SuperflightDirectory = "steamapps/common/SuperFlight";
         public const string ManagedDirectory = "superflight_Data/Managed";
         public const string AssemblyLib = "Assembly-CSharp.dll";
-        public const string InstalledModDirectory = "installedMods";
-        public const string SavedModDirectory = "savedMods";
         public const string ModExt = "dll";
 
-        public static string SavedManifestLocation => $"{SavedModLocation}/manifest.json";
-        public static string InstalledManifestLocation => $"{InstalledModLocation}/manifest.json";
         public static string ManagedLocation => $"{AbsoluteInstallDirectory}/{ManagedDirectory}";
         public static string AssemblyLocation => $"{ManagedLocation}/{AssemblyLib}";
         public static string AssemblyBackupLocation => $"{AssemblyLocation}.backup";
-        public static string InstalledModLocation => $"{AbsoluteInstallDirectory}/{InstalledModDirectory}";
-        public static string SavedModLocation => $"{AbsoluteInstallDirectory}/{SavedModDirectory}";
         private static string _absoluteInstallDirectory;
 
         public static string AbsoluteInstallDirectory {

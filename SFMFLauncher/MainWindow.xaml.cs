@@ -1,5 +1,7 @@
-﻿using SFMFManager;
+﻿using Microsoft.Win32;
+using SFMFManager;
 using SFMFManager.Util;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -47,6 +49,18 @@ namespace SFMFLauncher
             UpdateScoreReportingLabel();
         }
 
+        private void MenuImportLocalMod_Click(object sender, RoutedEventArgs e)
+        {
+            var openDialog = new OpenFileDialog();
+            openDialog.Filter = "DLL Files (*.dll)|*.dll";
+            openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (openDialog.ShowDialog() == true)
+                Manager.LoadLocalMod(openDialog.FileName);
+
+            UpdateAllMods();
+        }
+
         private void BtnToggleFramework_Click(object sender, RoutedEventArgs e)
         {
             if (Manager.IsSFMFInstalled())
@@ -66,7 +80,7 @@ namespace SFMFLauncher
         private void BtnDownloadMod_Click(object sender, RoutedEventArgs e)
         {
             var mod = ((Button)sender).Tag as Mod;
-            Manager.SaveMod(mod);
+            Manager.DownloadMod(mod);
             UpdateAllMods();
         }
 
