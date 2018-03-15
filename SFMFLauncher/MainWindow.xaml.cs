@@ -1,5 +1,7 @@
-﻿using SFMFManager;
+﻿using Microsoft.Win32;
+using SFMFManager;
 using SFMFManager.Util;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -47,6 +49,23 @@ namespace SFMFLauncher
             UpdateScoreReportingLabel();
         }
 
+        private void MenuImportLocalMod_Click(object sender, RoutedEventArgs e)
+        {
+            var openDialog = new OpenFileDialog();
+            openDialog.Filter = "DLL Files (*.dll)|*.dll";
+            openDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (openDialog.ShowDialog() == true)
+                Manager.LoadLocalMod(openDialog.FileName);
+
+            UpdateAllMods();
+        }
+
+        private void MenuRefreshOnlineMods_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.LoadAllMods();
+        }
+
         private void BtnToggleFramework_Click(object sender, RoutedEventArgs e)
         {
             if (Manager.IsSFMFInstalled())
@@ -66,7 +85,7 @@ namespace SFMFLauncher
         private void BtnDownloadMod_Click(object sender, RoutedEventArgs e)
         {
             var mod = ((Button)sender).Tag as Mod;
-            Manager.SaveMod(mod);
+            Manager.DownloadMod(mod);
             UpdateAllMods();
         }
 
@@ -82,7 +101,6 @@ namespace SFMFLauncher
             var mod = ((Button)sender).Tag as Mod;
             Manager.InstallMod(mod);
             UpdateAllMods();
-            UpdateScoreReportingLabel();
         }
 
         private void BtnUninstallMod_Click(object sender, RoutedEventArgs e)
@@ -90,7 +108,6 @@ namespace SFMFLauncher
             var mod = ((Button)sender).Tag as Mod;
             Manager.UninstallMod(mod);
             UpdateAllMods();
-            UpdateScoreReportingLabel();
         }
 
         private void UpdateScoreReportingLabel()
@@ -108,9 +125,12 @@ namespace SFMFLauncher
 
         private void UpdateAllMods()
         {
+            BtnToggleFramework.IsEnabled = false;
             UpdateOnlineMods();
             UpdateSavedMods();
             UpdateInstalledMods();
+            UpdateScoreReportingLabel();
+            BtnToggleFramework.IsEnabled = true;
         }
 
         private void UpdateOnlineMods()

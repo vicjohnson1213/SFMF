@@ -9,7 +9,7 @@ namespace SFMF
 {
     public class Core : MonoBehaviour
     {
-        private const string modDir = @".\installedMods";
+        private const string modsFile = @".\SFMF\installedMods.txt";
         private const string modExt = "dll";
 
         [DllImport("kernel32")]
@@ -36,38 +36,41 @@ namespace SFMF
         private void LoadPlugins()
         {
             Console.WriteLine("Loading mods...");
-            try
+
+            if (!File.Exists(modsFile))
             {
-                string[] files = Directory.GetFiles(modDir, $"*.{modExt}", SearchOption.TopDirectoryOnly);
-                if (files.Length == 0)
-                    Console.WriteLine("No mods found");
-                else
-                {
-                    List<Type> plugins = new List<Type>();
-                    Console.WriteLine($"Found {files.Length} mods");
-                    foreach (string file in files)
-                    {
-                        try
-                        {
-                            Assembly asm = Assembly.Load(File.ReadAllBytes(file));
-                            foreach (var type in asm.GetExportedTypes())
-                                if (typeof(IMod).IsAssignableFrom(type))
-                                    plugins.Add(type);
-                            Console.WriteLine($"Loaded mod: {file}");
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine($"Failed to load mod: '{file}': {e.Message}");
-                        }
-                    }
-                    Console.WriteLine($"Loaded {plugins.Count} mods");
-                    foreach (Type mod in plugins)
-                        gameObject.AddComponent(mod);
-                }
+                Console.WriteLine($"'{modsFile}' does not exist.");
+                return;
             }
-            catch (Exception)
+
+            string[] installedMods = File.ReadAllLines(modsFile);
+            if (installedMods.Length == 0)
+                Console.WriteLine("No mods found");
+            else
             {
-                Console.WriteLine($"Failed to find mod directory '{modDir}'");
+                List<Type> mods = new List<Type>();
+                Console.WriteLine($"Found {installedMods.Length} mods");
+                foreach (string modPath in installedMods)
+                {
+                    try
+                    {
+                        Assembly asm = Assembly.Load(File.ReadAllBytes(modPath));
+                        foreach (var type in asm.GetExportedTypes())
+                            if (typeof(IMod).IsAssignableFrom(type))
+                                mods.Add(type);
+
+                        Console.WriteLine($"Loaded mod: {modPath}");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Failed to load mod: '{modPath}': {e.Message}");
+                    }
+                }
+
+                Console.WriteLine($"Loaded {mods.Count} mods");
+
+                foreach (Type mod in mods)
+                    gameObject.AddComponent(mod);
             }
         }
     }

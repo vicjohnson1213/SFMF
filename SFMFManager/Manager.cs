@@ -11,12 +11,26 @@ namespace SFMFManager
 {
     public class Manager
     {
-        public List<Mod> OnlineMods = new List<Mod>();
-        public List<Mod> SavedMods = new List<Mod>();
-        public List<Mod> InstalledMods = new List<Mod>();
+        private List<Mod> Manifest { get; set; }
+        public List<Mod> OnlineMods { get; set; }
+        public List<Mod> InstalledMods => Manifest.Where(m => m.Installed).ToList();
+        public List<Mod> SavedMods => Manifest.Where(m => !m.Installed).ToList();
 
         public Manager()
         {
+            if (!Directory.Exists(Constants.SFMFDirectory))
+                Directory.CreateDirectory(Constants.SFMFDirectory);
+
+            if (!File.Exists(Constants.ManifestFile))
+                using (var w = File.AppendText(Constants.ManifestFile))
+                    w.WriteLine("[]");
+
+            if (!File.Exists(Constants.InstalledModsFile))
+                using (var w = File.AppendText(Constants.InstalledModsFile)) { };
+
+            OnlineMods = new List<Mod>();
+            Manifest = new List<Mod>();
+
             LoadAllMods();
         }
 
@@ -40,82 +54,93 @@ namespace SFMFManager
             return !InstalledMods.Any(m => m.DisableScoreReporting);
         }
 
-        public void SaveMod(Mod mod)
+        public void DownloadMod(Mod mod)
         {
-            var newPath = $"{Constants.SavedModLocation}/{mod.Name}.dll";
+            var newPath = $"{Constants.SFMFDirectory}/{mod.Name}.dll";
 
-            if (!Directory.Exists(Constants.SavedModLocation))
-                Directory.CreateDirectory(Constants.SavedModLocation);
-
-            if (String.IsNullOrEmpty(mod.Path))
-                using (var client = new WebClient())
-                    client.DownloadFileAsync(new Uri(mod.Download), newPath);
-            else
-                File.Move(mod.Path, newPath);
+            using (var client = new WebClient())
+                client.DownloadFileAsync(new Uri(mod.Download), newPath);
 
             mod.Path = newPath;
             
-            SavedMods.Add(mod);
+            Manifest.Add(mod);
+            File.WriteAllText(Constants.ManifestFile, Newtonsoft.Json.JsonConvert.SerializeObject(Manifest));
 
-            File.WriteAllText(Constants.SavedManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(SavedMods));
+            InstallMod(mod);
+        }
+
+        public void LoadLocalMod(string path)
+        {
+            var fileInfo = new FileInfo(path);
+
+            var mod = new Mod
+            {
+                Name = fileInfo.Name,
+                Version = "local",
+                Path = path,
+                DisableScoreReporting = true,
+                Local = true
+            };
+
+            Manifest.Add(mod);
+            File.WriteAllText(Constants.ManifestFile, Newtonsoft.Json.JsonConvert.SerializeObject(Manifest));
+
+            InstallMod(mod);
         }
 
         public void RemoveMod(Mod mod)
         {
-            SavedMods = SavedMods.Where(m => m.Path != mod.Path).ToList();
+            if (!mod.Local)
+                File.Delete(mod.Path);
 
-            File.Delete(mod.Path);
-            File.WriteAllText(Constants.SavedManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(SavedMods));
+            Manifest.Remove(mod);
+            File.WriteAllText(Constants.ManifestFile, Newtonsoft.Json.JsonConvert.SerializeObject(Manifest));
         }
 
         public void InstallMod(Mod mod)
         {
-            var newPath = $"{Constants.InstalledModLocation}/{mod.Name}.dll";
+            var isScoreReportingEnabled = IsScoreReportindEnabled();
 
-            if (!Directory.Exists(Constants.InstalledModLocation))
-                Directory.CreateDirectory(Constants.InstalledModLocation);
+            mod.Installed = true;
+            var installedMods = File.ReadAllLines(Constants.InstalledModsFile).ToList();
+            installedMods.Add(mod.Path);
 
-            File.Move(mod.Path, newPath);
-            RemoveMod(mod);
-            mod.Path = newPath;
+            File.WriteAllLines(Constants.InstalledModsFile, installedMods);
 
-            InstalledMods.Add(mod);
-
-            File.WriteAllText(Constants.InstalledManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(InstalledMods));
+            if (isScoreReportingEnabled != IsScoreReportindEnabled())
+            {
+                UninstallSFMF();
+                InstallSFMF();
+            }
         }
 
         public void UninstallMod(Mod mod)
         {
-            InstalledMods = InstalledMods.Where(m => m.Path != mod.Path).ToList();
+            var isScoreReportingEnabled = IsScoreReportindEnabled();
 
-            File.WriteAllText(Constants.InstalledManifestLocation, Newtonsoft.Json.JsonConvert.SerializeObject(InstalledMods));
+            mod.Installed = false;
+            var installedMods = File.ReadAllLines(Constants.InstalledModsFile).ToList();
+            installedMods.Remove(mod.Path);
 
-            SaveMod(mod);
+            File.WriteAllLines(Constants.InstalledModsFile, installedMods);
+
+            if (isScoreReportingEnabled != IsScoreReportindEnabled())
+            {
+                UninstallSFMF();
+                InstallSFMF();
+            }
         }
 
         public void LoadAllMods()
         {
             OnlineMods = LoadOnlineMods();
-            SavedMods = LoadSavedMods();
-            InstalledMods = LoadInstalledMods();
-        }
 
-        public List<Mod> LoadInstalledMods()
-        {
-            if (!File.Exists(Constants.InstalledManifestLocation))
-                return new List<Mod>();
+            var json = File.ReadAllText(Constants.ManifestFile);
+            Manifest = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Mod>>(json);
 
-            string manifest = File.ReadAllText(Constants.InstalledManifestLocation);
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<List<Mod>>(manifest);
-        }
-
-        public List<Mod> LoadSavedMods()
-        {
-            if (!File.Exists(Constants.SavedManifestLocation))
-                return new List<Mod>();
-
-            string manifest = File.ReadAllText(Constants.SavedManifestLocation);
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<List<Mod>>(manifest);
+            var installedMods = File.ReadAllLines(Constants.InstalledModsFile);
+            foreach (var m in Manifest)
+                m.Installed = installedMods.Contains(m.Path);
         }
 
         public List<Mod> LoadOnlineMods()
