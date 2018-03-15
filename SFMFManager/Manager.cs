@@ -22,10 +22,11 @@ namespace SFMFManager
                 Directory.CreateDirectory(Constants.SFMFDirectory);
 
             if (!File.Exists(Constants.ManifestFile))
-                File.Create(Constants.ManifestFile);
+                using (var w = File.AppendText(Constants.ManifestFile))
+                    w.WriteLine("[]");
 
             if (!File.Exists(Constants.InstalledModsFile))
-                File.Create(Constants.InstalledModsFile);
+                using (var w = File.AppendText(Constants.InstalledModsFile)) { };
 
             OnlineMods = new List<Mod>();
             Manifest = new List<Mod>();
