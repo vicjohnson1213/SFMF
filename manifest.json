@@ -3,6 +3,7 @@
 	"modlist": [
 		{
 			"name": "Unlimited Flight",
+			"description": "Fly anywhere you please without stalling out or slowing down too much.",
 			"authors": ["vicjohnson1213", "Phlarfl"],
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/unlimited-flight-v1.0.0/UnlimitedFlight.dll",
@@ -10,6 +11,7 @@
 		},
 		{
 			"name": "Visible Cursor",
+			"description": "Set the cursor to be visible in the game so the mouse can be used in the menu.",
 			"authors": ["vicjohnson1213", "Phlarfl"],
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/visible-cursor-v1.0.0/VisibleCursor.dll",
@@ -17,6 +19,7 @@
 		},
 		{
 			"name": "Run Statistics",
+			"description": "Record assorted statistics about your run as you fly. Great for analyzing and comparing runs.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.2",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/run-statistics-v1.0.2/RunStatistics.dll",
@@ -24,6 +27,7 @@
 		},
 		{
 			"name": "Next World",
+			"description": "Press tab (on keyboard) or X (on controller) to automatically advance to the next world.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v1.0.0/NextWorld.dll",
