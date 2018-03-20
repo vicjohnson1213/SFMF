@@ -28,7 +28,6 @@ Once those references have been updated, you should be able run the project with
 ## Project Structure
 
 - _SFMF_ - The assembly that is injected into Superflight with the core mod that searches for and loads all other mods.
-- _SFMFConstants_ - Constants that can be used throughout the solution.
 - _SFMFLauncher_ - The front end application for managing SFMF and installed mods.
 - _SFMFManager_ - The library responsible for managing downloading and installing mods as well as installing the framework.
 
