@@ -91,10 +91,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SFMFConstants\SFMFConstants.csproj">
-      <Project>{a95767bb-09dd-4455-9235-7a79eb0598fb}</Project>
-      <Name>SFMFConstants</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SFMFManager\SFMFManager.csproj">
       <Project>{74D256E5-F9DE-4529-8101-4F481ACCB223}</Project>
       <Name>SFMFManager</Name>

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMF", "SFMF\SFMF.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMFManager", "SFMFManager\SFMFManager.csproj", "{74D256E5-F9DE-4529-8101-4F481ACCB223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMFConstants", "SFMFConstants\SFMFConstants.csproj", "{A95767BB-09DD-4455-9235-7A79EB0598FB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{74D256E5-F9DE-4529-8101-4F481ACCB223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74D256E5-F9DE-4529-8101-4F481ACCB223}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74D256E5-F9DE-4529-8101-4F481ACCB223}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A95767BB-09DD-4455-9235-7A79EB0598FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A95767BB-09DD-4455-9235-7A79EB0598FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A95767BB-09DD-4455-9235-7A79EB0598FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A95767BB-09DD-4455-9235-7A79EB0598FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

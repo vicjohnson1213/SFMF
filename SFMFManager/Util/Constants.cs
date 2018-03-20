@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace SFMFConstants
+namespace SFMFManager.Util
 {
     public static class Constants
     {
@@ -24,8 +24,10 @@ namespace SFMFConstants
         public static string AssemblyBackupLocation => $"{AssemblyLocation}.backup";
         private static string _absoluteInstallDirectory;
 
-        public static string AbsoluteInstallDirectory {
-            get {
+        public static string AbsoluteInstallDirectory
+        {
+            get
+            {
                 if (_absoluteInstallDirectory != null)
                     return _absoluteInstallDirectory;
 
@@ -42,7 +44,7 @@ namespace SFMFConstants
                             _absoluteInstallDirectory = $"{path}/{SuperflightDirectory}";
                             return _absoluteInstallDirectory;
                         }
-                            
+
                 }
 
                 return null;

@@ -62,18 +62,13 @@
     <Compile Include="Injection\Injector.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Constants.cs" />
     <Compile Include="Util\Mod.cs" />
     <Compile Include="Util\Settings.cs" />
     <Compile Include="Util\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SFMFConstants\SFMFConstants.csproj">
-      <Project>{a95767bb-09dd-4455-9235-7a79eb0598fb}</Project>
-      <Name>SFMFConstants</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

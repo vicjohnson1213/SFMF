@@ -1,12 +1,12 @@
 ﻿using ILRepacking;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
+using SFMFManager.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using SFMFConstants;
 
 namespace SFMFManager.Injection
 {

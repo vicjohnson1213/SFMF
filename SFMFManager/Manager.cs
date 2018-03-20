@@ -1,5 +1,4 @@
-﻿using SFMFConstants;
-using SFMFManager.Injection;
+﻿using SFMFManager.Injection;
 using SFMFManager.Util;
 using System;
 using System.Collections.Generic;
