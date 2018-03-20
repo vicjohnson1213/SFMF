@@ -88,7 +88,7 @@
             </Grid>
 
             <Label x:Name="LblScoreReportingWarning" Grid.Row="1" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"  Foreground="#FFC90000" />
-            <Button x:Name="BtnToggleFramework" Content="Install SFMF" Grid.Row="1" Width="200" Margin="5,0,5,5" HorizontalAlignment="Right" Click="BtnToggleFramework_Click" />
+            <Button x:Name="BtnToggleFramework" Content="Install SFMF" Grid.Row="1" Width="200" Margin="5,0,5,5" HorizontalAlignment="Right" Click="BtnToggleFramework_Click" FontWeight="Bold" FontSize="16" />
         </Grid>
     </DockPanel>
 </Window>

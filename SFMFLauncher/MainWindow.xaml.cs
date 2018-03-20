@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace SFMFLauncher
 {
@@ -46,6 +47,7 @@ namespace SFMFLauncher
         private void UpdateStates()
         {
             BtnToggleFramework.Content = Manager.IsSFMFInstalled() ? "Uninstall SFMF" : "Install SFMF";
+            BtnToggleFramework.Foreground = Manager.IsSFMFInstalled() ? new SolidColorBrush(Color.FromArgb(0xFF, 0x81, 0x00, 0x00)) : new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0x81, 0x00));
             UpdateScoreReportingLabel();
         }
 
