@@ -35,12 +35,14 @@ namespace SFMFManager
 
         public void InstallSFMF()
         {
-            Injector.InstallFramework(!IsScoreReportindEnabled());
+            if (!IsSFMFInstalled())
+                Injector.InstallFramework(!IsScoreReportindEnabled());
         }
 
         public void UninstallSFMF()
         {
-            Injector.UninstallFramework();
+            if (IsSFMFInstalled())
+                Injector.UninstallFramework();
         }
 
         public bool IsSFMFInstalled()
