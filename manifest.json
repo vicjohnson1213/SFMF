@@ -32,6 +32,14 @@
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v1.0.0/NextWorld.dll",
 			"disableScoreReporting": false
+		},
+		{
+			"name": "Speedometer",
+			"description": "Displays the current player speed in the bottom left corner of the game.",
+			"authors": ["vicjohnson1213"],
+			"version": "v1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/speedometer-v1.0.0/Speedometer.dll",
+			"disableScoreReporting": false
 		}
 	]
 }
