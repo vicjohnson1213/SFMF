@@ -1,5 +1,5 @@
 {
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"modlist": [
 		{
 			"name": "Unlimited Flight",
@@ -39,6 +39,14 @@
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/speedometer-v1.0.0/Speedometer.dll",
+			"disableScoreReporting": false
+		},
+		{
+			"name": "High Score Trail",
+			"description": "Leaves a trail behind your player following your highest scoring run in any particular world.",
+			"authors": ["vicjohnson1213"],
+			"version": "v1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/high-score-trail-v1.0.0/HighScoreTrail.dll",
 			"disableScoreReporting": false
 		}
 	]
