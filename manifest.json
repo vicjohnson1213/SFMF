@@ -19,7 +19,7 @@
 		},
 		{
 			"name": "Run Statistics",
-			"description": "Record assorted statistics about your run as you fly. Great for analyzing and comparing runs.",
+			"description": "Record assorted statistics about your run as you fly. Great for analyzing and comparing runs. Statistics will be saved in Documents/SFMF/rundata.csv.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.2",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/run-statistics-v1.0.2/RunStatistics.dll",
