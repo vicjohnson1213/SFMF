@@ -1,8 +1,4 @@
 $(function () {
-    let headerColor = getRandomColor();
-    $('#page-header').addClass('siimple-jumbotron--' + headerColor);
-    $('#download-button').addClass('color-' + headerColor);
-
     $.get('https://raw.githubusercontent.com/vicjohnson1213/SFMF/manifest/manifest.json')
         .then((res) => {
             let sfmf = JSON.parse(res);
@@ -31,7 +27,7 @@ $(function () {
 
     function createMod(mod) {
         let col = $('<div>', {
-            class: 'siimple-grid-col siimple-grid-col--4 siimple-grid-col-sm--12'
+            class: 'siimple-grid-col siimple-grid-col--12'
         });
 
         let box = $('<div>', {

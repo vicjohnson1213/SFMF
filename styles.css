@@ -106,6 +106,7 @@ a:visited {
 .mod-box {
     padding: 0;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .mod-box-header {
