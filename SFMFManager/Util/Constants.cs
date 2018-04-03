@@ -6,7 +6,7 @@ namespace SFMFManager.Util
 {
     public static class Constants
     {
-        public static readonly string Version = "v1.0.3";
+        public static readonly string Version = "v1.0.5";
         public const string SettingsURL = "https://raw.githubusercontent.com/vicjohnson1213/SFMF/manifest/manifest.json";
         public static string SFMFDirectory = $"{AbsoluteInstallDirectory}/SFMF";
         public static string ManifestFile = $"{SFMFDirectory}/manifest.json";
