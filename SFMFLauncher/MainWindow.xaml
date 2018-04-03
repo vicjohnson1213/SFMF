@@ -11,6 +11,7 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_Import Local Mod" Click="MenuImportLocalMod_Click" />
                 <MenuItem Header="_Refresh Online Mods" Click="MenuRefreshOnlineMods_Click" />
+                <MenuItem Header="_Check for Updates" Click="MenuCheckForUpdates_Click" />
             </MenuItem>
         </Menu>
         <Grid>

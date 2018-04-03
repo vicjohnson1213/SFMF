@@ -10,10 +10,18 @@ namespace SFMFManager
 {
     public class Manager
     {
+        private Settings Settings { get; set; }
         private List<Mod> Manifest { get; set; }
-        public List<Mod> OnlineMods { get; set; }
+
+        public List<Mod> OnlineMods => Settings.modlist;
         public List<Mod> InstalledMods => Manifest.Where(m => m.Installed).ToList();
         public List<Mod> SavedMods => Manifest.Where(m => !m.Installed).ToList();
+
+        public bool IsSFMFInstalled => Injector.IsFrameworkInstalled();
+        public bool IsScoreReportingEnabled => !InstalledMods.Any(m => m.DisableScoreReporting);
+        public bool IsUpdateAvailable => Settings != null && (Settings.version != Constants.Version);
+
+        public string Homepage => Settings.homepage;
 
         public Manager()
         {
@@ -26,33 +34,23 @@ namespace SFMFManager
 
             if (!File.Exists(Constants.InstalledModsFile))
                 using (var w = File.AppendText(Constants.InstalledModsFile)) { };
-
-            OnlineMods = new List<Mod>();
+            
             Manifest = new List<Mod>();
 
-            LoadAllMods();
+            Settings = InitSettings();
+            InitSavedMods();
         }
 
         public void InstallSFMF()
         {
-            if (!IsSFMFInstalled())
-                Injector.InstallFramework(!IsScoreReportindEnabled());
+            if (!IsSFMFInstalled)
+                Injector.InstallFramework(!IsScoreReportingEnabled);
         }
 
         public void UninstallSFMF()
         {
-            if (IsSFMFInstalled())
+            if (IsSFMFInstalled)
                 Injector.UninstallFramework();
-        }
-
-        public bool IsSFMFInstalled()
-        {
-            return Injector.IsFrameworkInstalled();
-        }
-
-        public bool IsScoreReportindEnabled()
-        {
-            return !InstalledMods.Any(m => m.DisableScoreReporting);
         }
 
         public void DownloadMod(Mod mod)
@@ -100,7 +98,7 @@ namespace SFMFManager
 
         public void InstallMod(Mod mod)
         {
-            var isScoreReportingEnabled = IsScoreReportindEnabled();
+            var isScoreReportingEnabled = IsScoreReportingEnabled;
 
             mod.Installed = true;
             var installedMods = File.ReadAllLines(Constants.InstalledModsFile).ToList();
@@ -108,7 +106,7 @@ namespace SFMFManager
 
             File.WriteAllLines(Constants.InstalledModsFile, installedMods);
 
-            if (isScoreReportingEnabled != IsScoreReportindEnabled())
+            if (isScoreReportingEnabled != IsScoreReportingEnabled)
             {
                 UninstallSFMF();
                 InstallSFMF();
@@ -117,7 +115,7 @@ namespace SFMFManager
 
         public void UninstallMod(Mod mod)
         {
-            var isScoreReportingEnabled = IsScoreReportindEnabled();
+            var isScoreReportingEnabled = IsScoreReportingEnabled;
 
             mod.Installed = false;
             var installedMods = File.ReadAllLines(Constants.InstalledModsFile).ToList();
@@ -125,17 +123,20 @@ namespace SFMFManager
 
             File.WriteAllLines(Constants.InstalledModsFile, installedMods);
 
-            if (isScoreReportingEnabled != IsScoreReportindEnabled())
+            if (isScoreReportingEnabled != IsScoreReportingEnabled)
             {
                 UninstallSFMF();
                 InstallSFMF();
             }
         }
 
-        public void LoadAllMods()
+        public void ReloadOnlineMods()
         {
-            OnlineMods = LoadOnlineMods();
+            Settings = InitSettings();
+        }
 
+        private void InitSavedMods()
+        {
             var json = File.ReadAllText(Constants.ManifestFile);
             Manifest = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Mod>>(json);
 
@@ -144,12 +145,7 @@ namespace SFMFManager
                 m.Installed = installedMods.Contains(m.Path);
         }
 
-        public List<Mod> LoadOnlineMods()
-        {
-            return LoadSettings().modlist;
-        }
-
-        public Settings LoadSettings()
+        private Settings InitSettings()
         {
             string json;
             using (var client = new WebClient())
