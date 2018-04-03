@@ -79,6 +79,10 @@ namespace SFMFLauncher
                 if (result == MessageBoxResult.Yes)
                     Process.Start(Manager.Homepage);
             }
+            else
+            {
+                MessageBox.Show("You already have the most recent version of SFMF.", "No Update Available", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void BtnToggleFramework_Click(object sender, RoutedEventArgs e)
