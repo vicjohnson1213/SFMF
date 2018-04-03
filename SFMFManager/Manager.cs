@@ -106,7 +106,7 @@ namespace SFMFManager
 
             File.WriteAllLines(Constants.InstalledModsFile, installedMods);
 
-            if (isScoreReportingEnabled != IsScoreReportingEnabled)
+            if (IsSFMFInstalled && isScoreReportingEnabled != IsScoreReportingEnabled)
             {
                 UninstallSFMF();
                 InstallSFMF();
@@ -123,7 +123,7 @@ namespace SFMFManager
 
             File.WriteAllLines(Constants.InstalledModsFile, installedMods);
 
-            if (isScoreReportingEnabled != IsScoreReportingEnabled)
+            if (IsSFMFInstalled && isScoreReportingEnabled != IsScoreReportingEnabled)
             {
                 UninstallSFMF();
                 InstallSFMF();
