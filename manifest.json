@@ -3,43 +3,27 @@
 	"homepage": "https://vicjohnson1213.github.io/SFMF/",
 	"modlist": [
 		{
-			"name": "Unlimited Flight",
-			"description": "Fly anywhere you please without stalling out or slowing down too much.",
-			"authors": ["vicjohnson1213", "Phlarfl"],
+			"name": "Trails",
+			"description": "Leaves a trail behind your player on each run. Press C (on keyboard) or B (on controller) to clear all previous trails.",
+			"authors": ["vicjohnson1213"],
 			"version": "v1.0.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/unlimited-flight-v1.0.0/UnlimitedFlight.dll",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/trails-v1.0.0/Trails.dll",
+			"disableScoreReporting": false
+		},
+		{
+			"name": "Slow Motion",
+			"description": "Hold LShift (on keyboard) or X (on controller) to slow down time.",
+			"authors": ["vicjohnson1213"],
+			"version": "v1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/slow-motion-v1.0.0/SlowMotion.dll",
 			"disableScoreReporting": true
 		},
 		{
-			"name": "Visible Cursor",
-			"description": "Set the cursor to be visible in the game so the mouse can be used in the menu.",
-			"authors": ["vicjohnson1213", "Phlarfl"],
-			"version": "v1.0.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/visible-cursor-v1.0.0/VisibleCursor.dll",
-			"disableScoreReporting": false
-		},
-		{
-			"name": "Run Statistics",
-			"description": "Record assorted statistics about your run as you fly. Great for analyzing and comparing runs. Statistics will be saved in Documents/SFMF/rundata.csv.",
-			"authors": ["vicjohnson1213"],
-			"version": "v1.0.2",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/run-statistics-v1.0.2/RunStatistics.dll",
-			"disableScoreReporting": false
-		},
-		{
 			"name": "Next World",
-			"description": "Press tab (on keyboard) or X (on controller) to automatically advance to the next world.",
+			"description": "Press tab (on keyboard) or RB (on controller) to automatically advance to the next world.",
 			"authors": ["vicjohnson1213"],
-			"version": "v1.0.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v1.0.0/NextWorld.dll",
-			"disableScoreReporting": false
-		},
-		{
-			"name": "Speedometer",
-			"description": "Displays the current player speed in the bottom left corner of the game.",
-			"authors": ["vicjohnson1213"],
-			"version": "v1.0.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/speedometer-v1.0.0/Speedometer.dll",
+			"version": "v1.1.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v1.1.0/NextWorld.dll",
 			"disableScoreReporting": false
 		},
 		{
@@ -51,11 +35,35 @@
 			"disableScoreReporting": false
 		},
 		{
-			"name": "Trails",
-			"description": "Leaves a trail behind your player on each run. Press C (on keyboard) or B (on controller) to clear all previous trails.",
+			"name": "Unlimited Flight",
+			"description": "Fly anywhere you please without stalling out or slowing down too much.",
+			"authors": ["vicjohnson1213", "Phlarfl"],
+			"version": "v1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/unlimited-flight-v1.0.0/UnlimitedFlight.dll",
+			"disableScoreReporting": true
+		},
+		{
+			"name": "Run Statistics",
+			"description": "Record assorted statistics about your run as you fly. Great for analyzing and comparing runs. Statistics will be saved in Documents/SFMF/rundata.csv.",
+			"authors": ["vicjohnson1213"],
+			"version": "v1.0.2",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/run-statistics-v1.0.2/RunStatistics.dll",
+			"disableScoreReporting": false
+		},
+		{
+			"name": "Visible Cursor",
+			"description": "Set the cursor to be visible in the game so the mouse can be used in the menu.",
+			"authors": ["vicjohnson1213", "Phlarfl"],
+			"version": "v1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/visible-cursor-v1.0.0/VisibleCursor.dll",
+			"disableScoreReporting": false
+		},
+		{
+			"name": "Speedometer",
+			"description": "Displays the current player speed in the bottom left corner of the game.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/trails-v1.0.0/Trails.dll",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/speedometer-v1.0.0/Speedometer.dll",
 			"disableScoreReporting": false
 		},
 		{
