@@ -37,7 +37,7 @@ namespace SFMFLauncher
             ICInstalledMods.ItemsSource = InstalledMods;
 
             InitializeUI();
-       }
+        }
 
         private void InitializeUI()
         {
