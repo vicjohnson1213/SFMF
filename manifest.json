@@ -57,6 +57,15 @@
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/trails-v1.0.0/Trails.dll",
 			"disableScoreReporting": false
+		},
+		{
+			"name": "First Person",
+			"description": "The camera is in first person perspective.",
+			"authors": ["vicjohnson1213"],
+			"version": "alpha1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/first-person-alpha1.0.0/FirstPerson.dll",
+			"disableScoreReporting": true,
+			"prerelease": true
 		}
 	]
 }
