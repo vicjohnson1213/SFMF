@@ -4,6 +4,7 @@ using SFMFManager.Util;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,7 +37,7 @@ namespace SFMFLauncher
             ICInstalledMods.ItemsSource = InstalledMods;
 
             InitializeUI();
-       }
+        }
 
         private void InitializeUI()
         {
@@ -46,8 +47,8 @@ namespace SFMFLauncher
 
         private void UpdateStates()
         {
-            BtnToggleFramework.Content = Manager.IsSFMFInstalled() ? "Uninstall SFMF" : "Install SFMF";
-            BtnToggleFramework.Foreground = Manager.IsSFMFInstalled() ? new SolidColorBrush(Color.FromArgb(0xFF, 0x81, 0x00, 0x00)) : new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0x81, 0x00));
+            BtnToggleFramework.Content = Manager.IsSFMFInstalled ? "Uninstall SFMF" : "Install SFMF";
+            BtnToggleFramework.Foreground = Manager.IsSFMFInstalled ? new SolidColorBrush(Color.FromArgb(0xFF, 0x81, 0x00, 0x00)) : new SolidColorBrush(Color.FromArgb(0xFF, 0x00, 0x81, 0x00));
             UpdateScoreReportingLabel();
         }
 
@@ -65,13 +66,28 @@ namespace SFMFLauncher
 
         private void MenuRefreshOnlineMods_Click(object sender, RoutedEventArgs e)
         {
-            Manager.LoadAllMods();
+            Manager.ReloadOnlineMods();
             UpdateAllMods();
+        }
+
+        private void MenuCheckForUpdates_Click(object sender, RoutedEventArgs e)
+        {
+            if (Manager.IsUpdateAvailable)
+            {
+                var result = MessageBox.Show("There is a new update available, would you like to download it?", "Update Available", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+                if (result == MessageBoxResult.Yes)
+                    Process.Start(Manager.Homepage);
+            }
+            else
+            {
+                MessageBox.Show("You already have the most recent version of SFMF.", "No Update Available", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void BtnToggleFramework_Click(object sender, RoutedEventArgs e)
         {
-            if (Manager.IsSFMFInstalled())
+            if (Manager.IsSFMFInstalled)
             {
                 Manager.UninstallSFMF();
                 BtnToggleFramework.Content = "Install SFMF";
@@ -115,7 +131,7 @@ namespace SFMFLauncher
 
         private void UpdateScoreReportingLabel()
         {
-            if (Manager.IsScoreReportindEnabled())
+            if (Manager.IsScoreReportingEnabled)
             {
                 LblScoreReportingWarning.Visibility = Visibility.Hidden;
                 return;
