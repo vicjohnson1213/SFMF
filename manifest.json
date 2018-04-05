@@ -3,6 +3,14 @@
 	"homepage": "https://vicjohnson1213.github.io/SFMF/",
 	"modlist": [
 		{
+			"name": "Jetpack",
+			"description": "Hold LShift (on keyboard) or RB (on controller) to accelerate your player forward.",
+			"authors": ["vicjohnson1213"],
+			"version": "v1.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/jetpack-v1.0.0/Jetpack.dll",
+			"disableScoreReporting": true
+		},
+		{
 			"name": "Trails",
 			"description": "Leaves a trail behind your player on each run. Press C (on keyboard) or B (on controller) to clear all previous trails.",
 			"authors": ["vicjohnson1213"],
@@ -12,18 +20,18 @@
 		},
 		{
 			"name": "Slow Motion",
-			"description": "Hold LShift (on keyboard) or X (on controller) to slow down time.",
+			"description": "Hold LCtrl (on keyboard) or X (on controller) to slow down time.",
 			"authors": ["vicjohnson1213"],
-			"version": "v1.0.2",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/slow-motion-v1.0.2/SlowMotion.dll",
+			"version": "v1.1.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/slow-motion-v1.1.0/SlowMotion.dll",
 			"disableScoreReporting": true
 		},
 		{
 			"name": "Next World",
-			"description": "Press tab (on keyboard) or RB (on controller) to automatically advance to the next world.",
+			"description": "Press tab (on keyboard) or R3 (click the right stick on controller) to automatically advance to the next world.",
 			"authors": ["vicjohnson1213"],
-			"version": "v1.1.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v1.1.0/NextWorld.dll",
+			"version": "v1.2.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v1.2.0/NextWorld.dll",
 			"disableScoreReporting": false
 		},
 		{
