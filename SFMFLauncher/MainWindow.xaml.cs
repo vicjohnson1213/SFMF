@@ -101,6 +101,13 @@ namespace SFMFLauncher
             UpdateStates();
         }
 
+        private void BtnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            var mod = ((Button)sender).Tag as Mod;
+            var infoWindow = new ModDetailsWindow(mod);
+            infoWindow.Show();
+        }
+
         private void BtnDownloadMod_Click(object sender, RoutedEventArgs e)
         {
             var mod = ((Button)sender).Tag as Mod;
