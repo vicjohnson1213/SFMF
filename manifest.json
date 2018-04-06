@@ -7,8 +7,8 @@
 			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/Jetpack",
 			"description": "Allows the player to accelerate through the world.",
 			"authors": ["vicjohnson1213"],
-			"version": "v1.0.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/jetpack-v1.0.0/Jetpack.dll",
+			"version": "v2.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/jetpack-v2.0.0/Jetpack.dll",
 			"disableScoreReporting": true,
 			"settings": {
 				"settings": [
@@ -24,8 +24,8 @@
 			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/Trails",
 			"description": "Leaves a trail behind your player on each run. Press C (on keyboard) or B (on controller) to clear all previous trails.",
 			"authors": ["vicjohnson1213"],
-			"version": "v1.0.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/trails-v1.0.0/Trails.dll",
+			"version": "v2.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/trails-v2.0.0/Trails.dll",
 			"disableScoreReporting": false,
 			"settings": {
 				"controls": [
@@ -38,8 +38,8 @@
 			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/SlowMotion",
 			"description": "Allows a player to slow down time.",
 			"authors": ["vicjohnson1213"],
-			"version": "v1.1.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/slow-motion-v1.1.0/SlowMotion.dll",
+			"version": "v2.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/slow-motion-v2.0.0/SlowMotion.dll",
 			"disableScoreReporting": true,
 			"settings": {
 				"controls": [
@@ -52,8 +52,8 @@
 			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/NextWorld",
 			"description": "Allows a player to automatically advance to the next world.",
 			"authors": ["vicjohnson1213"],
-			"version": "v1.2.0",
-			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v1.2.0/NextWorld.dll",
+			"version": "v2.0.0",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v2.0.0/NextWorld.dll",
 			"disableScoreReporting": false,
 			"settings": {
 				"controls": [
