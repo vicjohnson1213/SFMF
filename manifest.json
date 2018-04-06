@@ -4,38 +4,66 @@
 	"modlist": [
 		{
 			"name": "Jetpack",
-			"description": "Hold LShift (on keyboard) or RB (on controller) to accelerate your player forward.",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/Jetpack",
+			"description": "Allows the player to accelerate through the world.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/jetpack-v1.0.0/Jetpack.dll",
-			"disableScoreReporting": true
+			"disableScoreReporting": true,
+			"settings": {
+				"settings": [
+					{ "name": "Acceleration", "value": "10" }
+				],
+				"controls": [
+					{ "action": "Boost", "keyboard": "LeftShift", "controller": "RB" }
+				]
+			}
 		},
 		{
 			"name": "Trails",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/Trails",
 			"description": "Leaves a trail behind your player on each run. Press C (on keyboard) or B (on controller) to clear all previous trails.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/trails-v1.0.0/Trails.dll",
-			"disableScoreReporting": false
+			"disableScoreReporting": false,
+			"settings": {
+				"controls": [
+					{ "action": "Clear trails", "keyboard": "C", "controller": "B" }
+				]
+			}
 		},
 		{
 			"name": "Slow Motion",
-			"description": "Hold LCtrl (on keyboard) or X (on controller) to slow down time.",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/SlowMotion",
+			"description": "Allows a player to slow down time.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.1.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/slow-motion-v1.1.0/SlowMotion.dll",
-			"disableScoreReporting": true
+			"disableScoreReporting": true,
+			"settings": {
+				"controls": [
+					{ "action": "Slow time", "keyboard": "LeftControl", "controller": "X" }
+				]
+			}
 		},
 		{
 			"name": "Next World",
-			"description": "Press tab (on keyboard) or R3 (click the right stick on controller) to automatically advance to the next world.",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/NextWorld",
+			"description": "Allows a player to automatically advance to the next world.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.2.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-world-v1.2.0/NextWorld.dll",
-			"disableScoreReporting": false
+			"disableScoreReporting": false,
+			"settings": {
+				"controls": [
+					{ "action": "Next world", "keyboard": "Tab", "controller": "R3" }
+				]
+			}
 		},
 		{
 			"name": "High Score Trail",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/HighScoreTrail",
 			"description": "Leaves a trail behind your player following your highest scoring run in any particular world.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.0",
@@ -44,6 +72,7 @@
 		},
 		{
 			"name": "Unlimited Flight",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/UnlimitedFlight",
 			"description": "Fly anywhere you please without stalling out or slowing down too much.",
 			"authors": ["vicjohnson1213", "Phlarfl"],
 			"version": "v1.0.0",
@@ -52,6 +81,7 @@
 		},
 		{
 			"name": "Run Statistics",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/RunStatistics",
 			"description": "Record assorted statistics about your run as you fly. Great for analyzing and comparing runs. Statistics will be saved in Documents/SFMF/rundata.csv.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.2",
@@ -60,6 +90,7 @@
 		},
 		{
 			"name": "Visible Cursor",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/VisibleCursor",
 			"description": "Set the cursor to be visible in the game so the mouse can be used in the menu.",
 			"authors": ["vicjohnson1213", "Phlarfl"],
 			"version": "v1.0.0",
@@ -68,6 +99,7 @@
 		},
 		{
 			"name": "Speedometer",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/Speedometer",
 			"description": "Displays the current player speed in the bottom left corner of the game.",
 			"authors": ["vicjohnson1213"],
 			"version": "v1.0.0",
@@ -76,6 +108,7 @@
 		},
 		{
 			"name": "First Person",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/FirstPerson",
 			"description": "The camera is in first person perspective.",
 			"authors": ["vicjohnson1213"],
 			"version": "alpha1.0.0",
