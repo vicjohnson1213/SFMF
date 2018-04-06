@@ -63,8 +63,10 @@
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Constants.cs" />
-    <Compile Include="Util\Mod.cs" />
-    <Compile Include="Util\Settings.cs" />
+    <Compile Include="Dto\Mod.cs" />
+    <Compile Include="Dto\Settings.cs" />
+    <Compile Include="Util\ControllerButtons.cs" />
+    <Compile Include="Util\KeyboardKeys.cs" />
     <Compile Include="Util\Util.cs" />
   </ItemGroup>
   <ItemGroup>

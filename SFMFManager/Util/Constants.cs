@@ -11,6 +11,7 @@ namespace SFMFManager.Util
         public static readonly string Version = "v1.0.5";
         public const string SettingsURL = "https://raw.githubusercontent.com/vicjohnson1213/SFMF/manifest/manifest.json";
         public static string SFMFDirectory = $"{AbsoluteInstallDirectory}/SFMF";
+        public static string ModSettingsDirectory = $"{SFMFDirectory}/ModSettings";
         public static string ManifestFile = $"{SFMFDirectory}/manifest.json";
         public static string InstalledModsFile = $"{SFMFDirectory}/installedMods.txt";
 

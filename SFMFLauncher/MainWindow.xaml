@@ -60,7 +60,7 @@
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0" Content="{Binding Name}" Padding="0" FontSize="14" FontWeight="Bold" Margin="10,5,10,5" VerticalAlignment="Center" Foreground="#FF333333" />
                                     <Label Grid.Row="0" Content="{Binding Version}" Padding="0" FontSize="14" HorizontalAlignment="Right" Margin="10,5,10,5" Foreground="#FF7E7E7E" />
-                                    <Button Grid.Row="1" Content="Info" Width="70" HorizontalAlignment="Right" Margin="10, 0, 160, 10" Tag="{Binding}" Click="BtnInfo_Click" />
+                                    <Button Grid.Row="1" Content="Settings" Width="70" HorizontalAlignment="Right" Margin="10, 0, 160, 10" Tag="{Binding}" Click="BtnInfo_Click" />
                                     <Button Grid.Row="1" Content="Remove" Width="70" HorizontalAlignment="Right" Margin="10,0,85,10" Tag="{Binding}" Click="BtnRemoveMod_Click" />
                                     <Button Grid.Row="1" Content="Install" Width="70" HorizontalAlignment="Right" Margin="10,0,10,10" Tag="{Binding}" Click="BtnInstallMod_Click" />
                                 </Grid>
@@ -82,6 +82,7 @@
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0" Content="{Binding Name}" Padding="0" FontSize="14" FontWeight="Bold" Margin="10,5,10,5" VerticalAlignment="Center" Foreground="#FF333333" />
                                     <Label Grid.Row="0" Content="{Binding Version}" Padding="0" FontSize="14" HorizontalAlignment="Right" Margin="10,5,10,5" Foreground="#FF7E7E7E" />
+                                    <Button Grid.Row="1" Content="Settings" Width="70" HorizontalAlignment="Right" Margin="10, 0, 85, 10" Tag="{Binding}" Click="BtnInfo_Click" />
                                     <Button Grid.Row="1" Content="Uninstall" Width="70" HorizontalAlignment="Right" Margin="10,0,10,10" Tag="{Binding}" Click="BtnUninstallMod_Click" />
                                 </Grid>
                             </DataTemplate>

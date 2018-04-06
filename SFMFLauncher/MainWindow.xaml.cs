@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 using SFMFManager;
-using SFMFManager.Util;
+using SFMFManager.Dto;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -104,7 +104,10 @@ namespace SFMFLauncher
         private void BtnInfo_Click(object sender, RoutedEventArgs e)
         {
             var mod = ((Button)sender).Tag as Mod;
-            var infoWindow = new ModDetailsWindow(mod);
+
+            var editingEnabled = mod.SettingsPath != null;
+
+            var infoWindow = new ModDetailsWindow(Manager, mod, editingEnabled);
             infoWindow.Show();
         }
 

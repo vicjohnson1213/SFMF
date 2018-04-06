@@ -1,7 +1,7 @@
 ﻿using SFMFManager.Util;
 using System.Collections.Generic;
 
-namespace SFMFManager.Util
+namespace SFMFManager.Dto
 {
     public class Settings
     {
