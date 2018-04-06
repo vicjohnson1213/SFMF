@@ -3,8 +3,8 @@ using SFMFManager.Dto;
 using SFMFManager.Util;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace SFMFLauncher
 {
@@ -56,12 +56,19 @@ namespace SFMFLauncher
 
             if (!Mod.DisableScoreReporting)
                 lblWarning.Visibility = Visibility.Collapsed;
+
+            if (string.IsNullOrWhiteSpace(Mod.Homepage))
+                BtnHomepage.Visibility = Visibility.Hidden;
+        }
+
+        private void BtnWebsite_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(Mod.Homepage);
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var mod = ((Button)sender).Tag as Mod;
-            Manager.SaveModSettings(mod);
+            Manager.SaveModSettings(Mod);
             Close();
         }
     }
