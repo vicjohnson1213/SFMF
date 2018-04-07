@@ -15,6 +15,11 @@ a:visited {
     color: #57607c;
 }
 
+img {
+    max-width: 80%;
+    padding: 20px;
+}
+
 .center {
     text-align: center
 }
@@ -31,8 +36,16 @@ a:visited {
     margin-left: 20px;
 }
 
+.top-margin {
+    margin-top: 20px;
+}
+
 .siimple-btn + .siimple-btn {
     margin-left: 10px;
+}
+
+.siimple-p {
+    font-size: 18px;
 }
 
 .header .siimple-content {
