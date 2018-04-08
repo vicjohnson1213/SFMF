@@ -59,13 +59,15 @@ namespace SFMFManager
         /// <param name="mod">The mod to download.</param>
         public void DownloadMod(Mod mod)
         {
-            var newPath = $"{Constants.SFMFDirectory}/{mod.Name}.dll";
+            var newPath = $"{Constants.SFMFDirectory}/{mod.Name}-{mod.Version}.dll";
 
             mod.SettingsPath = $"{Constants.ModSettingsDirectory}/{mod.Name}.csv";
 
-            // Don't everwrite any custom settings that may already exist for this mod.
+            // Don't everwrite any custom settings that may already exist for this mod, load them instead.
             if (!File.Exists(mod.SettingsPath))
-                  SaveModSettings(mod);
+                SaveModSettings(mod);
+            else
+                mod.Settings = GetModSettings(mod.SettingsPath);
 
             using (var client = new WebClient())
                 client.DownloadFileAsync(new Uri(mod.Download), newPath);
@@ -93,7 +95,7 @@ namespace SFMFManager
                 Version = "local",
                 Path = path,
                 SettingsPath = settingsPath,
-                Settings = InitModSettings(settingsPath),
+                Settings = GetModSettings(settingsPath),
                 DisableScoreReporting = true,
                 Local = true
             };
@@ -224,7 +226,7 @@ namespace SFMFManager
             Settings = Newtonsoft.Json.JsonConvert.DeserializeObject<Settings>(json);
         }
 
-        private ModSettings InitModSettings(string settingsPath)
+        private ModSettings GetModSettings(string settingsPath)
         {
             if (!File.Exists(settingsPath))
                 return null;
