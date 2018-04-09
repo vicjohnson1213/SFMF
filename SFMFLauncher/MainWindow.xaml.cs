@@ -41,6 +41,7 @@ namespace SFMFLauncher
 
         private void InitializeUI()
         {
+            Title = $"{Strings.WindowTitle} {Manager.SFMFVersion}";
             BtnUpdateAvailable.Visibility = Manager.IsUpdateAvailable ? Visibility.Visible : Visibility.Hidden;
 
             UpdateStates();
@@ -186,6 +187,7 @@ namespace SFMFLauncher
         private static class Strings
         {
             public const string DisabledScoreReportingWarning = "Score reporting is disabled";
+            public const string WindowTitle = "Superflight Modding Framework";
         }
     }
 }

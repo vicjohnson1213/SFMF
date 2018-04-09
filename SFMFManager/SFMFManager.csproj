@@ -65,8 +65,6 @@
     <Compile Include="Util\Constants.cs" />
     <Compile Include="Dto\Mod.cs" />
     <Compile Include="Dto\Settings.cs" />
-    <Compile Include="Util\ControllerButtons.cs" />
-    <Compile Include="Util\KeyboardKeys.cs" />
     <Compile Include="Util\Util.cs" />
   </ItemGroup>
   <ItemGroup>

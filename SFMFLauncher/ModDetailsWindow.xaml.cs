@@ -1,10 +1,10 @@
 ﻿using SFMFManager;
 using SFMFManager.Dto;
-using SFMFManager.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
+using static SFMF.Util;
 
 namespace SFMFLauncher
 {

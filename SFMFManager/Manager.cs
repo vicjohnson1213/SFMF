@@ -23,6 +23,7 @@ namespace SFMFManager
         public bool IsUpdateAvailable => Settings != null && (Settings.version != Constants.Version);
 
         public string Homepage => Settings.homepage;
+        public string SFMFVersion => Constants.Version;
 
         public Manager()
         {
@@ -177,6 +178,9 @@ namespace SFMFManager
             SaveManifest();
         }
 
+        /// <summary>
+        /// Persists any changes to the manifest to disk.
+        /// </summary>
         public void SaveManifest()
         {
             File.WriteAllText(Constants.ManifestFile, Newtonsoft.Json.JsonConvert.SerializeObject(Manifest));
@@ -211,7 +215,12 @@ namespace SFMFManager
 
             var installedMods = File.ReadAllLines(Constants.InstalledModsFile);
             foreach (var m in Manifest)
+            {
                 m.Installed = installedMods.Contains(m.Path);
+
+                if (m.Local)
+                    m.Settings = GetModSettings(m.SettingsPath);
+            }
         }
 
         /// <summary>
