@@ -52,18 +52,27 @@ namespace SFMF
                 Console.WriteLine($"Found {installedMods.Length} mods");
                 foreach (string modPath in installedMods)
                 {
-                    try
-                    {
-                        Assembly asm = Assembly.Load(File.ReadAllBytes(modPath));
-                        foreach (var type in asm.GetExportedTypes())
-                            if (typeof(IMod).IsAssignableFrom(type))
-                                mods.Add(type);
+                    var trimmedModPath = modPath.Trim();
 
-                        Console.WriteLine($"Loaded mod: {modPath}");
-                    }
-                    catch (Exception e)
+                    if (trimmedModPath.StartsWith("#"))
                     {
-                        Console.WriteLine($"Failed to load mod: '{modPath}': {e.Message}");
+                        Console.WriteLine($"Skipping commented mod: {trimmedModPath}");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            Assembly asm = Assembly.Load(File.ReadAllBytes(trimmedModPath));
+                            foreach (var type in asm.GetExportedTypes())
+                                if (typeof(IMod).IsAssignableFrom(type))
+                                    mods.Add(type);
+
+                            Console.WriteLine($"Loaded mod: {trimmedModPath}");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Failed to load mod: '{trimmedModPath}': {e.Message}");
+                        }
                     }
                 }
 
