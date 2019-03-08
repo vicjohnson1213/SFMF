@@ -1,6 +1,6 @@
 # SFMF
 
-> SFMF is a framework facilitating the creation, distribution, and installation of mods for Superflight.
+> SFMF is a framework facilitating the creation, distribution, and installation of mods for [Superflight]{https://superflightgame.com/}.
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ You'll need to make sure you've got these few things set up in order to compile 
 
 ### Installing
 
-Since SFMF references a couple of the game's .dll files, you'll need to update those references to point to your copy of Superflight.
+Since SFMF references a couple of the game's .dll files, you'll need to update those references to point to your copy of Superflight. These .dll files can be found in Superflight's installation directory.
 
 Update these references in _SFMF > SFMF_:
 
