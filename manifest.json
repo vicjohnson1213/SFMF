@@ -1,6 +1,7 @@
 {
 	"version": "v2.0.1",
 	"homepage": "https://vicjohnson1213.github.io/SFMF/",
+	"superflightGameURI": "steam://rungameid/732430",
 	"modlist": [
 		{
 			"name": "Jetpack",
