@@ -91,7 +91,8 @@
             </Grid>
 
             <Label x:Name="LblScoreReportingWarning" Grid.Row="1" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"  Foreground="#FFC90000" />
-            <Button x:Name="BtnUpdateAvailable" Content="Update Available" Grid.Row="1" Width="180" Margin="5,0,190,5" HorizontalAlignment="Right" Click="BtnOpenHomepage_Click" FontWeight="Bold" FontSize="16" />
+            <Button x:Name="BtnUpdateAvailable" Content="Update Available" Grid.Row="1" Width="180" Margin="5,0,375,5" HorizontalAlignment="Right" Click="BtnOpenHomepage_Click" FontWeight="Bold" FontSize="16" />
+            <Button x:Name="BtnLaunchSuperflight" Content="Launch Superflight" Grid.Row="1" Width="180" Margin="5,0,190,5" HorizontalAlignment="Right" Click="BtnLauchSuperflight_Click" FontWeight="Bold" FontSize="16" />
             <Button x:Name="BtnToggleFramework" Content="Install SFMF" Grid.Row="1" Width="180" Margin="5,0,5,5" HorizontalAlignment="Right" Click="BtnToggleFramework_Click" FontWeight="Bold" FontSize="16" />
         </Grid>
     </DockPanel>

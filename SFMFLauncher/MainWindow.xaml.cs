@@ -72,6 +72,11 @@ namespace SFMFLauncher
             UpdateAllMods();
         }
 
+        private void BtnLauchSuperflight_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(Manager.SuperflightGameURI);
+        }
+
         private void BtnOpenHomepage_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(Manager.Homepage);

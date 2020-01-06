@@ -7,6 +7,7 @@ namespace SFMFManager.Dto
     {
         public string version;
         public string homepage;
+        public string superflightGameURI;
         public List<Mod> modlist;
     }
 }

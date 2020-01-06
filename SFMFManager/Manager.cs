@@ -23,6 +23,7 @@ namespace SFMFManager
         public bool IsUpdateAvailable => Settings != null && (Settings.version != Constants.Version);
 
         public string Homepage => Settings.homepage;
+        public string SuperflightGameURI => Settings.superflightGameURI;
 
         public Manager()
         {
