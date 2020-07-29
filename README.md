@@ -1,6 +1,6 @@
 # SFMF
 
-> SFMF is a framework facilitating the creation, distribution, and installation of mods for [Superflight]{https://superflightgame.com/}.
+> SFMF is a framework facilitating the creation, distribution, and installation of mods for [Superflight](https://superflightgame.com/).
 
 ## Getting Started
 
