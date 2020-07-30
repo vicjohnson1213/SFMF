@@ -20,7 +20,7 @@ UnityEngine.CoreModule -> ...\SuperFlight\superflight_Data\Managed\UnityEngine.C
 
 Here's an example of the reference in one of my mods:
 
-![Proper .dll references](images/References.png)
+![Proper .dll references](Images/References.png)
 
 ### A Simple Mod
 
