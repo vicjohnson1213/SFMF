@@ -31,6 +31,10 @@ Once those references have been updated, you should be able run the project with
 - _SFMFLauncher_ - The front end application for managing SFMF and installed mods.
 - _SFMFManager_ - The library responsible for managing downloading and installing mods as well as installing the framework.
 
+## Developing a Mod
+
+Check out [this guide](CreatingMods.md) if you'd like to create your own mod and contribute to SFMF.
+
 ## Acknowledgments
 
 - Inspired and seeded by [@Phlarfl's](https://github.com/Phlarfl) implementation of SFMF.
