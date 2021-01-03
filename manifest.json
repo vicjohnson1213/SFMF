@@ -123,6 +123,23 @@
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/first-person-alpha1.0.0/FirstPerson.dll",
 			"disableScoreReporting": true,
 			"prerelease": true
+		},
+		{
+			"name": "Expand your World",
+			"homepage": "https://github.com/RobynTheDevil/Superflight-Mods/tree/release/ExpandWorld/ExpandWorld",
+			"description": "Unlock your game, fly to new hights! Removes the fog barrier around and below the world. Options to change terrain genreation (experimental).",
+			"authors": ["RobynTheDevil"],
+			"version": "v0.0.1",
+			"download": "https://github.com/RobynTheDevil/Superflight-Mods/releases/download/ex-world-v0.0.1/ExpandWorld.dll",
+			"disableScoreReporting": true,
+			"settings": {
+				"settings": [
+					{ "name" : "WorldScale", "Value" : "2.5" },
+					{ "name" : "WorldDensity", "Value" : "100" },
+					{ "name" : "Unlocked", "Value" : "True" },
+					{ "name" : "TerrainIndex", "Value" : "-1" }
+				]
+			}
 		}
 	]
 }
