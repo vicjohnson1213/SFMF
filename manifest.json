@@ -56,6 +56,7 @@
 		},
 		{
 			"name": "Next World",
+			"featured": true,
 			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/NextWorld",
 			"description": "Allows a player to automatically advance to the next world.",
 			"authors": ["vicjohnson1213"],
@@ -115,7 +116,6 @@
 		},
 		{
 			"name": "First Person",
-			"featured": true,
 			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/FirstPerson",
 			"description": "Fly through the world in a first person perspective.",
 			"authors": ["vicjohnson1213"],
@@ -149,6 +149,19 @@
 			"version": "v1.0.0",
 			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/next-seeds-v1.0.0/NextSeeds.dll",
 			"disableScoreReporting": true
+		},{
+			"name": "Player Color",
+			"homepage": "https://github.com/vicjohnson1213/Superflight-Mods/tree/master/PlayerColor",
+			"description": "Change the color of your player to any color supported by HTML.",
+			"authors": ["vicjohnson1213"],
+			"version": "v1.0.1",
+			"download": "https://github.com/vicjohnson1213/Superflight-Mods/releases/download/player-color-v1.0.1/PlayerColor.dll",
+			"disableScoreReporting": false,
+			"settings": {
+				"settings": [
+					{ "name": "Color", "value": "#FF0000" }
+				]
+			}
 		}
 	]
 }
