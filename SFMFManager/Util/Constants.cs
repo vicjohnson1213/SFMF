@@ -16,7 +16,8 @@ namespace SFMFManager.Util
         public static string InstalledModsFile = $"{SFMFDirectory}/installedMods.txt";
 
         private const string SteamRegistry = @"HKEY_CURRENT_USER\Software\Valve\Steam";
-        private const string SteamConfig = "config/config.vdf";
+        private const string SteamGeneralConfig = "config/config.vdf";
+        private const string SteamInstallLocationsConfig = "config/libraryfolders.vdf";
         private const string SuperflightDirectory = "steamapps/common/SuperFlight";
         private const string SFManagedDirectory = "superflight_Data/Managed";
         private const string SFAssemblyFileName = "Assembly-CSharp.dll";
@@ -38,18 +39,23 @@ namespace SFMFManager.Util
                 {
                     var steamInstallLocations = new List<string> { steamDirectory };
 
-                    var configLines = File.ReadAllLines($"{steamDirectory}/{SteamConfig}").ToList();
+                    var generalConfigLines = File.ReadAllLines($"{steamDirectory}/{SteamGeneralConfig}").ToList();
+                    steamInstallLocations.AddRange(generalConfigLines
+                        .Where(line => line.Contains("BaseInstallFolder_"))
+                        .Select(line => ExtractValueFromVDF("BaseInstallFolder_\\d+", line)));
 
-                    steamInstallLocations.AddRange(configLines
-                        .Where(l => l.Contains("BaseInstallFolder_"))
-                        .Select(ExtractValueFromVDF));
+                    var installLocationsConfigLines = File.ReadAllLines($"{steamDirectory}/{SteamInstallLocationsConfig}").ToList();
+                    steamInstallLocations.AddRange(installLocationsConfigLines
+                        .Where(line => line.Contains("path"))
+                        .Select(line => ExtractValueFromVDF("path", line)));
 
                     foreach (var location in steamInstallLocations)
                     {
-                        var assemblyFile = new FileInfo($"{location}/{SuperflightDirectory}/{SFManagedDirectory}/{SFAssemblyFileName}");
+                        var normalizedLocation = location.Replace("\\\\", "/");
+                        var assemblyFile = new FileInfo($"{normalizedLocation}/{SuperflightDirectory}/{SFManagedDirectory}/{SFAssemblyFileName}");
                         if (assemblyFile.Exists)
                         {
-                            _absoluteInstallDirectory = $"{location}/{SuperflightDirectory}";
+                            _absoluteInstallDirectory = $"{normalizedLocation}/{SuperflightDirectory}";
                             return _absoluteInstallDirectory;
                         }
                     }
@@ -59,9 +65,9 @@ namespace SFMFManager.Util
             }
         }
 
-        private static string ExtractValueFromVDF(string vdfLine)
+        private static string ExtractValueFromVDF(string keyPattern, string vdfLine)
         {
-            var re = new Regex(@"\s*""BaseInstallFolder_\d+""\s+""(?<Value>.+)""\s*");
+            var re = new Regex($@"\s*""{keyPattern}""\s+""(?<Value>.+)""\s*");
             return re.Match(vdfLine).Groups["Value"].Value;
         }
     }

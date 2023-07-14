@@ -8,9 +8,9 @@
 
 You'll need to make sure you've got these few things set up in order to compile and run SFMF.
 
-- Superflight
+- Superflight (installed through Steam)
+- [.NET 4.6.1 developer pack](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net461) (I haven't tested which other versions are compatible)
 - Visual Studio
-- .NET 4.6.1 (I haven't tested which other versions are compatible)
 
 ### Installing
 
